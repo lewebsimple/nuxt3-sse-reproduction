@@ -1,29 +1,10 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Server-sent events bug reproduction
 
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
-
-## Setup
-
-Make sure to install the dependencies
-
-```bash
-yarn install
+After starting the dev server, navigate to `http://localhost:3000/api/graphql` and execute the following GraphQL query:
+```
+subscription {
+  time
+}
 ```
 
-## Development
-
-Start the development server on http://localhost:3000
-
-```bash
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-yarn build
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+The network request that should stay connected drops immediately and the subscription doesn't work.
